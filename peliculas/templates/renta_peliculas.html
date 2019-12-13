@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Renta Películas</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <th>Peícula</th>
+                <th>Stock</th>
+                <th>selección</th>
+            </thead>
+            <tbody>
+                {% for pelicula in peliculas %}
+                    <tr>
+                        <td>{{pelicula.nombre}}</td>
+                        <td>{{pelicula.stock}}</td>
+                        <td>
+                            <input type="checkbox" name="{{pelicula.id}}" id="{{pelicula.id}}">
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <button id="rentar" type="submit">Rentar</button>
+            </tfoot>
+        </table>
+    </form>
+</body>
+</html>
