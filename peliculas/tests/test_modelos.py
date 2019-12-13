@@ -61,3 +61,28 @@ class TestModelos(TestCase):
         pelicula.save()
 
         self.assertEqual(Pelicula.objects.all()[0], pelicula)
+
+    def test_mayor_a_cero(self):
+        pelicula = Pelicula(
+            nombre='Infierno',
+            genero='war',
+            duracion=120,
+            descripcion='Esta muy violenta',
+            stock=10
+        )
+        pelicula.save()
+
+        self.assertGreater(pelicula.duracion, 0)
+
+    def test_duracion_menos_que_la_pelicula_mas_larga_de_la_historia(self):
+        pelicula = Pelicula(
+            nombre='resan',
+            genero='mutigenero',
+            duracion= 870,
+            descripcion='Se estreno en 1987',
+            stock= 5
+        )
+        pelicula.save()
+
+        self.assertGreater(pelicula.duracion, 0)
+
